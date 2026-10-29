@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-autoscale-cluster
+spec:
+  selector:
+    matchLabels:
+      redis: redis-cluster-pods-lbl
+  replicas: 6
+  template:
+    metadata:
+      labels:
+        redis: redis-cluster-pods-lbl
+    spec:
+      nodeSelector:
+        role: redis-workers
+      containers:
+      - name: redis-cluster-pod
+        image: capitanodocker/redis-autoscale-cluster:0.1
+        imagePullPolicy: IfNotPresent
+        command: ['/bin/bash','/entrypoint.sh']
+        resources:
+          requests:
+            memory: "8Mi"
+            cpu: "150m"
+          limits:
+            memory: "16Mi"
+            cpu: "200m"

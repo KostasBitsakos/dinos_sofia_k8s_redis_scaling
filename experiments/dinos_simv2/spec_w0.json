@@ -1,0 +1,226 @@
+{
+  "name": "dinos-simv2-w0-provisional",
+  "scope": "sim",
+  "cwd": "code/experiments/dinos_simv2",
+  "entries": [
+    {
+      "name": "baselines-w0",
+      "seed": 0,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "baselines",
+        "--seed",
+        "0",
+        "--workload",
+        "W0",
+        "--eval-episodes",
+        "5"
+      ]
+    },
+    {
+      "name": "dinos_t-w0-s0",
+      "seed": 0,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "dinos_t",
+        "--seed",
+        "0",
+        "--workload",
+        "W0",
+        "--train-steps",
+        "50000",
+        "--eval-episodes",
+        "5",
+        "--pretrained",
+        "5"
+      ]
+    },
+    {
+      "name": "lstm_scratch-w0-s0",
+      "seed": 0,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "lstm_scratch",
+        "--seed",
+        "0",
+        "--workload",
+        "W0",
+        "--train-steps",
+        "50000",
+        "--eval-episodes",
+        "5"
+      ]
+    },
+    {
+      "name": "derp-w0-s0",
+      "seed": 0,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "derp",
+        "--seed",
+        "0",
+        "--workload",
+        "W0",
+        "--train-steps",
+        "50000",
+        "--eval-episodes",
+        "5"
+      ]
+    },
+    {
+      "name": "dinos_t-w0-s1",
+      "seed": 1,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "dinos_t",
+        "--seed",
+        "1",
+        "--workload",
+        "W0",
+        "--train-steps",
+        "50000",
+        "--eval-episodes",
+        "5",
+        "--pretrained",
+        "5"
+      ]
+    },
+    {
+      "name": "lstm_scratch-w0-s1",
+      "seed": 1,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "lstm_scratch",
+        "--seed",
+        "1",
+        "--workload",
+        "W0",
+        "--train-steps",
+        "50000",
+        "--eval-episodes",
+        "5"
+      ]
+    },
+    {
+      "name": "derp-w0-s1",
+      "seed": 1,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "derp",
+        "--seed",
+        "1",
+        "--workload",
+        "W0",
+        "--train-steps",
+        "50000",
+        "--eval-episodes",
+        "5"
+      ]
+    },
+    {
+      "name": "dinos_t-w0-s2",
+      "seed": 2,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "dinos_t",
+        "--seed",
+        "2",
+        "--workload",
+        "W0",
+        "--train-steps",
+        "50000",
+        "--eval-episodes",
+        "5",
+        "--pretrained",
+        "5"
+      ]
+    },
+    {
+      "name": "lstm_scratch-w0-s2",
+      "seed": 2,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "lstm_scratch",
+        "--seed",
+        "2",
+        "--workload",
+        "W0",
+        "--train-steps",
+        "50000",
+        "--eval-episodes",
+        "5"
+      ]
+    },
+    {
+      "name": "derp-w0-s2",
+      "seed": 2,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "derp",
+        "--seed",
+        "2",
+        "--workload",
+        "W0",
+        "--train-steps",
+        "50000",
+        "--eval-episodes",
+        "5"
+      ]
+    }
+  ],
+  "max_parallel": 5,
+  "max_attempts": 1,
+  "limits": {
+    "wall_clock_hours": 1.0
+  }
+}

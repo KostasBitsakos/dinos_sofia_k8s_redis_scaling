@@ -1,0 +1,274 @@
+{
+  "name": "simv2-calibration-stageA-sweeps",
+  "scope": "real",
+  "cwd": "code/calibration",
+  "entries": [
+    {
+      "name": "00-create-namespace-deployment-service",
+      "seed": 0,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--",
+        "kubectl",
+        "--context",
+        "kubernetes-admin@kubernetes",
+        "--namespace",
+        "qrl-calib",
+        "apply",
+        "-f",
+        "k8s/qrl-calib.yaml"
+      ]
+    },
+    {
+      "name": "01-wait-for-3-pods",
+      "seed": 0,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--",
+        "kubectl",
+        "--context",
+        "kubernetes-admin@kubernetes",
+        "--namespace",
+        "qrl-calib",
+        "rollout",
+        "status",
+        "deployment/redis-autoscale-cluster",
+        "--timeout=180s"
+      ]
+    },
+    {
+      "name": "02-bootstrap-cluster-3",
+      "seed": 0,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--",
+        "../../.venv/bin/python",
+        "scale_to.py",
+        "--bootstrap",
+        "3"
+      ]
+    },
+    {
+      "name": "03-sweep-c1-a",
+      "seed": 100,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "1",
+        "--seed",
+        "100"
+      ]
+    },
+    {
+      "name": "04-sweep-c2-a",
+      "seed": 101,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "2",
+        "--seed",
+        "101"
+      ]
+    },
+    {
+      "name": "05-sweep-c4-a",
+      "seed": 102,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "4",
+        "--seed",
+        "102"
+      ]
+    },
+    {
+      "name": "06-sweep-c8-a",
+      "seed": 103,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "8",
+        "--seed",
+        "103"
+      ]
+    },
+    {
+      "name": "07-sweep-c16-a",
+      "seed": 104,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "16",
+        "--seed",
+        "104"
+      ]
+    },
+    {
+      "name": "08-sweep-c30-a",
+      "seed": 105,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "30",
+        "--seed",
+        "105"
+      ]
+    },
+    {
+      "name": "09-sweep-c30-b",
+      "seed": 106,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "30",
+        "--seed",
+        "106"
+      ]
+    },
+    {
+      "name": "10-sweep-c16-b",
+      "seed": 107,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "16",
+        "--seed",
+        "107"
+      ]
+    },
+    {
+      "name": "11-sweep-c8-b",
+      "seed": 108,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "8",
+        "--seed",
+        "108"
+      ]
+    },
+    {
+      "name": "12-sweep-c4-b",
+      "seed": 109,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "4",
+        "--seed",
+        "109"
+      ]
+    },
+    {
+      "name": "13-sweep-c2-b",
+      "seed": 110,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "2",
+        "--seed",
+        "110"
+      ]
+    },
+    {
+      "name": "14-sweep-c1-b",
+      "seed": 111,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_c.py",
+        "--c",
+        "1",
+        "--seed",
+        "111"
+      ]
+    },
+    {
+      "name": "15-rollback-delete-namespace",
+      "seed": 0,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--allow-failed",
+        "--",
+        "bash",
+        "rollback.sh"
+      ]
+    }
+  ],
+  "max_parallel": 1,
+  "max_attempts": 1,
+  "limits": {
+    "wall_clock_hours": 1.0
+  },
+  "real": {
+    "kube_context": "kubernetes-admin@kubernetes",
+    "namespace": "qrl-calib",
+    "deployment": "redis-autoscale-cluster",
+    "rollback": "bash code/calibration/rollback.sh  (kubectl delete namespace qrl-calib; the default namespace is never touched)",
+    "resource_limits": "<= 30 pods x (150m/8Mi requests, 200m/16Mi limits) in qrl-calib; load generator on the host, <= 8 worker processes; a memory trip (pod cgroup working set > 95% of 16Mi, fork/rewrite near the limit, unreadable memory) stops all scaling and triggers recovery",
+    "data_loss": "accepted by the researcher for the calibration namespace (R-20261016-018, 2026-10-16)",
+    "entries_must_run_in_order": true,
+    "entry_gating": "every entry runs through gate.py: previous entry must have succeeded, else rollback.sh runs and the entry refuses (tools/launch_run.py does not stop dependent entries); sweep/transition entries also require a healthy cluster"
+  }
+}

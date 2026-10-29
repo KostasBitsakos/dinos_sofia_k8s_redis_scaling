@@ -1,0 +1,11 @@
+Fine-tuning time (modelCPU_1.pth): 454.11 seconds
+Evaluation time (modelCPU_1.pth): 52.71 seconds
+Fine-tuning time (modelCPU_2.pth): 0.30 seconds
+Evaluation time (modelCPU_2.pth): 58.14 seconds
+Fine-tuning time (modelCPU_5.pth): 0.00 seconds
+Evaluation time (modelCPU_5.pth): 46.08 seconds
+Fine-tuning time (modelCPU_10.pth): 0.28 seconds
+Evaluation time (modelCPU_10.pth): 47.44 seconds
+Fine-tuning time (modelCPU_20.pth): 0.00 seconds
+Evaluation time (modelCPU_20.pth): 45.22 seconds
+Total experiment time: 736.95 seconds

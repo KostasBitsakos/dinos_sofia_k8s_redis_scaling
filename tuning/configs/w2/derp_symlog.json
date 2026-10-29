@@ -1,0 +1,1 @@
+{"agent": "derp", "agent_options": {"batched_double_dqn": true, "target_update_every": 100, "memory_size": 5000, "lr": 5e-05, "eps_schedule": "linear", "eps_start": 1.0, "eps_end": 0.05, "eps_decay_steps": 20000, "reward_transform": "symlog", "grad_clip": 10.0}}

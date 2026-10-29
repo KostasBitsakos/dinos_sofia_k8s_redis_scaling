@@ -1,0 +1,55 @@
+# Isolated, stateless copy of the researcher's Redis cluster Deployment (decision R-20261016-018).
+# Same image, requests/limits, nodeSelector and labels as code/real/redis-autoscale-cluster-deployment.yaml.
+# Differences: namespace qrl-calib; persistence off via args (AOF off, no RDB snapshots); the command runs redis-server
+# directly with the image's /redis.conf (cluster mode) instead of /entrypoint.sh, so the pods do not register with the
+# coordinator (there is none in this namespace). Applied ONLY via tools/launch_run.py with an approved real spec.
+# Rollback = `kubectl delete namespace qrl-calib`. The Deployment in namespace default is not touched.
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: qrl-calib
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: redis-autoscale-cluster
+  namespace: qrl-calib
+spec:
+  selector:
+    matchLabels:
+      redis: redis-cluster-pods-lbl
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        redis: redis-cluster-pods-lbl
+    spec:
+      nodeSelector:
+        role: redis-workers
+      containers:
+      - name: redis-cluster-pod
+        image: capitanodocker/redis-autoscale-cluster@sha256:1d51a336a275bdf8e9acbb6e53b7bea8e5da3202d13c3299876abdd87e9829d0  # tag 0.1; digest = imageID of the running pods in default, read 2026-10-16
+        imagePullPolicy: IfNotPresent
+        command: ["redis-server", "/redis.conf", "--protected-mode", "no", "--appendonly", "no", "--save", ""]
+        resources:
+          requests:
+            memory: "8Mi"
+            cpu: "150m"
+          limits:
+            memory: "16Mi"
+            cpu: "200m"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: redis-cluster-service
+  namespace: qrl-calib
+  labels:
+    name: redis-cluster-service-lbl
+spec:
+  ports:
+    - port: 6379
+      targetPort: 6379
+      protocol: TCP
+  selector:
+    redis: redis-cluster-pods-lbl

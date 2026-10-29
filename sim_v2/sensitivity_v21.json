@@ -1,0 +1,26 @@
+{
+  "_comment": "Sim v2.1 frozen sensitivity configurations (R-20261017-001). One-at-a-time variants of the Sim v2 defaults. Every value is provisional: ranges come from paper/notes/load_metrics_literature.md (section in 'source') or, where the literature gives none, from the design's provisional +-50% rule (marked PROVISIONAL). Do not edit after the W0 v2.1 spec is approved. Agents train on 'default'; the other configs are evaluation only.",
+  "configs": {
+    "default": {"overrides": {}, "source": {"all": "Sim v2 defaults (params.py)"}},
+    "theta_0.8": {"overrides": {"theta": 0.8},
+      "source": {"theta": "council C-20261016-01 card: sensitivity at 0.8 and 0.9; capacity at 30 pods is extrapolated"}},
+    "theta_0.9": {"overrides": {"theta": 0.9},
+      "source": {"theta": "council C-20261016-01 card: sensitivity at 0.8 and 0.9"}},
+    "rebalance_k14": {"overrides": {"rebalance_steps": 14},
+      "source": {"rebalance_steps": "load_metrics_literature.md 4.2 (redisblog2026asm, vendor grade B): legacy migration 192-219 s at 5 GB = about 13-15 control steps of 15 s; 14 is the midpoint. Dataset size on our cluster unknown, so PROVISIONAL"}},
+    "rebalance_delta_0.15": {"overrides": {"rebalance_loss": 0.15},
+      "source": {"rebalance_loss": "PROVISIONAL: default 0.3 x 0.5 (design +-50%); literature gives no capacity-loss figure (4.2, 4.3)"}},
+    "rebalance_delta_0.45": {"overrides": {"rebalance_loss": 0.45},
+      "source": {"rebalance_loss": "PROVISIONAL: default 0.3 x 1.5 (design +-50%); literature gives no capacity-loss figure (4.2, 4.3)"}},
+    "rebalance_asm_delta_0.05": {"overrides": {"rebalance_loss": 0.05},
+      "source": {"rebalance_loss": "load_metrics_literature.md 4.2 (redisblog2026asm): ASM average latency rose under 5 % for 2 s, throughput at baseline; used as a PROVISIONAL proxy for the capacity loss (capacity effect not reported), k stays 1 (6-9 s < one step)"}},
+    "latency_add_0.2ms": {"overrides": {"latency_add_s": 0.0002},
+      "source": {"latency_add_s": "load_metrics_literature.md 1.4 (redisdocs_latency): typical network latency 200 us on 1 Gbit/s TCP; flagged provisional for our cluster"}},
+    "tail_scale_1.5": {"overrides": {"tail_scale": 1.5},
+      "source": {"tail_scale": "PROVISIONAL: design +50% (kappa >= 1); li2014tales only says real tails are worse than queueing models, no number (1.1)"}},
+    "cpu_offset_10": {"overrides": {"cpu_offset_pct": 10.0},
+      "source": {"cpu_offset_pct": "PROVISIONAL: literature gives no range (2.3: fork stalls and background CPU do not follow request rate; no percentage). Observation only"}},
+    "cpu_offset_20": {"overrides": {"cpu_offset_pct": 20.0},
+      "source": {"cpu_offset_pct": "PROVISIONAL: as cpu_offset_10, twice the offset. Observation only"}}
+  }
+}

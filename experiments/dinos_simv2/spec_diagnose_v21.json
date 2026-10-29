@@ -1,0 +1,55 @@
+{
+  "name": "dinos-simv21-diagnose",
+  "scope": "sim",
+  "cwd": "code/experiments/dinos_simv2",
+  "entries": [
+    {
+      "name": "diagnose-w0-v21",
+      "seed": 0,
+      "cmd": [
+        "env",
+        "OMP_NUM_THREADS=1",
+        "MKL_NUM_THREADS=1",
+        "../../../.venv/bin/python",
+        "train_eval.py",
+        "--agent",
+        "diagnose",
+        "--seed",
+        "0",
+        "--workload",
+        "W0",
+        "--preflight-json",
+        "/home/ubuntu/qrl-lab/.lab/runs/20261017-140714-R-20261017-004-e0-a1/preflight.json",
+        "--freeze",
+        "spec_diagnose_v21.json"
+      ]
+    }
+  ],
+  "max_parallel": 1,
+  "max_attempts": 1,
+  "limits": {
+    "wall_clock_hours": 1.0
+  },
+  "frozen_sha256": {
+    "adapter.py": "f5854e247f9bf19d0829778803e2d30655fe8cc520e90f37ed277e4a72f2ffb1",
+    "agents.py": "1ea3ecf386dcd70eaece38835976ebb320c936b1194499fc137dcd795bc0bcaa",
+    "freeze.py": "27d4c98b254bd492b8a8f90095ca25cb903d54c99b95ab8d014cd7354400222e",
+    "train_eval.py": "0a459da7a8f77fc49d6bf65ef63bf0d62c82dc685b2ed6922cdc3233d92a865c",
+    "gate_rev1.json": "4eccf61b4d5b6ab63294fde7a2df17c51c213dc2e28f1d7dc94c670217b1de41",
+    "PREREG_rev1.md": "38398499bc2731df68f8ed5a010c6a2ebb0be5d267a3354e517273690a407d99",
+    "../../sim_v2/env.py": "6c842784000c847ad5fe26338eee33d136a3b23c4474a8893aea2828b8de9e17",
+    "../../sim_v2/params.py": "6bbf23cafecda5089a3c279e8e0cc73674ea7343eb28f1cca1ae2571689f4b2e",
+    "../../sim_v2/oracle.py": "cd5c77028fa9c8bb0cd2176842c8da155944bc9d6d520c3e93f2057f5d50ea3e",
+    "../../sim_v2/policies.py": "bcf2cab13fed9124178e5ef8515acdc97a47d3cc4f6bc7f09e24fcfbbd03335d",
+    "../../sim_v2/workloads.py": "1f3b1dc4cbaee6e586276728fe65b164dad6bc9d7fcd11bb3e94f769dab3cd1a",
+    "../../sim_v2/sensitivity.py": "117b449d3735ddb757f51194f678c9ffab8de1bf7f5a67fd5576fda97e0e5ad5",
+    "../../sim_v2/sensitivity_v21.json": "4a32489ca4503a7f84f254c173a9c9f06cb579f969f222ac8a81771942a132a3",
+    "../../sim/timeseries/Pytorch/lstm_transfer/agentHuber.py": "1888cb3a4efbcced836ec7d9aa4b6e1fc1ad6afbf130e8970bd72e0108d766a9",
+    "../../sim/timeseries/Pytorch/lstm_transfer/networks.py": "9c53eede8268d5f1e16f9f83b1c3f3e32569d68b054eb454cfaa73a8b642b221",
+    "../../sim/timeseries/Pytorch/lstm_transfer/modelCPU_5.pth": "6832beba0a34e08a005a05a4be37c9f3ef9c5808049eb2b55d96414be60243f3",
+    "../../sim/timeseries/Pytorch/dense/ddqnagent.py": "283ba8eacd36ef0286a6e70cb94268afafbaf7181d37d1ac925a767689ba4f26",
+    "../../sim/timeseries/Pytorch/dense/network.py": "3974c048fb4cc2318198c26c651af3c58d9ed364f0ce732f53bfeb2fa8414564",
+    "../../sim/timeseries/Pytorch/dense/environment.py": "b84df1324e53d5ae3104af51db01bcbf07bcdfeb0974e4a510e79e5cda8d2482"
+  },
+  "frozen_git_commit": "e9af1f6ac000e12243911fec6213b7131d2ee7e1"
+}

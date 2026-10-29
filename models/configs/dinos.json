@@ -1,0 +1,10 @@
+{
+  "model": "dinos",
+  "kind": "lstm",
+  "input_size": 6,
+  "hidden_size": 128,
+  "num_layers": 3,
+  "head": [],
+  "output_size": 3,
+  "output_activation": "linear"
+}

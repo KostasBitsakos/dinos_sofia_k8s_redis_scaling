@@ -1,0 +1,16 @@
+{
+  "name": "simv2-gates-provisional",
+  "scope": "sim",
+  "cwd": "code/sim_v2",
+  "entries": [
+    {
+      "name": "gates-seedblock0",
+      "seed": 0,
+      "cmd": ["env", "OMP_NUM_THREADS=1", "MKL_NUM_THREADS=1", "../../.venv/bin/python", "run_gates.py",
+              "--config", "gates_config.json", "--seed", "0", "--workers", "8"]
+    }
+  ],
+  "max_parallel": 1,
+  "max_attempts": 1,
+  "limits": {"wall_clock_hours": 1.0}
+}

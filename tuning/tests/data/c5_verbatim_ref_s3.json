@@ -1,0 +1,661 @@
+{
+ "lstm_scratch": {
+  "protocol": "c5",
+  "agent": "lstm_scratch",
+  "arm": "lstm_scratch",
+  "seed": 3,
+  "env_variant": "coupled",
+  "target_env": "lstm_transfer",
+  "target_variant": "coupled",
+  "source_env": null,
+  "source_variant": null,
+  "pretrain_ticks": 0,
+  "target_ticks": 40,
+  "total_ticks": 40,
+  "checkpoints": [
+   20,
+   40
+  ],
+  "eval_splits": [
+   "val",
+   "test"
+  ],
+  "eval_seeds": {
+   "val": [
+    1100,
+    1101
+   ],
+   "test": [
+    2000
+   ]
+  },
+  "eval_episode_ticks": 30,
+  "target_stream_seed": [
+   3,
+   5,
+   1
+  ],
+  "source_stream_seed": null,
+  "train_reset_on_done": true,
+  "reset_observation_window": true,
+  "torch_threads": 1,
+  "legacy_root": "~/simulations/redisk8s/timeseries/Pytorch",
+  "epsilon_start": 1.0,
+  "epsilon_min": 0.05,
+  "epsilon_decay": 0.995,
+  "learning_rate": 0.0001,
+  "pretrain_cpu_s": 1.441694717999999,
+  "checkpoint_results": {
+   "20": {
+    "target_tick": 20,
+    "epsilon_at_checkpoint": 0.9801495006250001,
+    "val": {
+     "sum5": 5999.663648903527,
+     "episodes": [
+      {
+       "ret": 3022.417653335323,
+       "ticks": 30,
+       "mean_pods": 2.1333333333333333,
+       "3L": 8736.428355839262,
+       "neg5lat": -2310.5239105384103,
+       "neg10N": -640.0,
+       "neg05cpu": -1374.622120553273,
+       "neg05mem": -1388.8646714122565,
+       "p95_latency": 22.469892914594507,
+       "mean_latency": 15.403492736922734
+      },
+      {
+       "ret": 2977.2459955682043,
+       "ticks": 30,
+       "mean_pods": 2.1333333333333333,
+       "3L": 8734.98297244327,
+       "neg5lat": -2348.4300123568396,
+       "neg10N": -640.0,
+       "neg05cpu": -1390.8023591158963,
+       "neg05mem": -1378.5046054023264,
+       "p95_latency": 22.847870732860773,
+       "mean_latency": 15.656200082378929
+      }
+     ],
+     "components_sum5": {
+      "3L": 17471.41132828253,
+      "neg5lat": -4658.95392289525,
+      "neg10N": -1280.0,
+      "neg05cpu": -2765.424479669169,
+      "neg05mem": -2767.369276814583
+     },
+     "ticks": 60,
+     "mean_pods": 2.1333333333333333,
+     "label": "val",
+     "n_episodes": 2,
+     "mean_ret": 2999.8318244517636,
+     "sd_ret": 31.941185524567565,
+     "components_mean": {
+      "3L": 8735.705664141266,
+      "neg5lat": -2329.476961447625,
+      "neg10N": -640.0,
+      "neg05cpu": -1382.7122398345846,
+      "neg05mem": -1383.6846384072915
+     },
+     "p95_latency_mean": 22.65888182372764
+    },
+    "test": {
+     "sum5": 3010.4562908748603,
+     "episodes": [
+      {
+       "ret": 3010.4562908748603,
+       "ticks": 30,
+       "mean_pods": 2.1333333333333333,
+       "3L": 8739.13261072019,
+       "neg5lat": -2354.2081161924593,
+       "neg10N": -640.0,
+       "neg05cpu": -1343.534326710879,
+       "neg05mem": -1390.9338769419903,
+       "p95_latency": 22.81212377012856,
+       "mean_latency": 15.694720774616398
+      }
+     ],
+     "components_sum5": {
+      "3L": 8739.13261072019,
+      "neg5lat": -2354.2081161924593,
+      "neg10N": -640.0,
+      "neg05cpu": -1343.534326710879,
+      "neg05mem": -1390.9338769419903
+     },
+     "ticks": 30,
+     "mean_pods": 2.1333333333333333,
+     "label": "test",
+     "n_episodes": 1,
+     "mean_ret": 3010.4562908748603,
+     "sd_ret": 0.0,
+     "components_mean": {
+      "3L": 8739.13261072019,
+      "neg5lat": -2354.2081161924593,
+      "neg10N": -640.0,
+      "neg05cpu": -1343.534326710879,
+      "neg05mem": -1390.9338769419903
+     },
+     "p95_latency_mean": 22.81212377012856
+    },
+    "cpu_s": 0.15154372800000004
+   },
+   "40": {
+    "target_tick": 40,
+    "epsilon_at_checkpoint": 0.8866535105013078,
+    "val": {
+     "sum5": 5719.469286395876,
+     "episodes": [
+      {
+       "ret": 2886.752002950523,
+       "ticks": 30,
+       "mean_pods": 1.3333333333333333,
+       "3L": 8736.428355839262,
+       "neg5lat": -2519.44404109483,
+       "neg10N": -400.0,
+       "neg05cpu": -1467.4860871006788,
+       "neg05mem": -1462.7462246932303,
+       "p95_latency": 22.469892914594507,
+       "mean_latency": 16.796293607298864
+      },
+      {
+       "ret": 2832.717283445353,
+       "ticks": 30,
+       "mean_pods": 1.3333333333333333,
+       "3L": 8734.98297244327,
+       "neg5lat": -2554.54783272335,
+       "neg10N": -400.0,
+       "neg05cpu": -1477.2942051195905,
+       "neg05mem": -1470.4236511549723,
+       "p95_latency": 22.847870732860773,
+       "mean_latency": 17.030318884822332
+      }
+     ],
+     "components_sum5": {
+      "3L": 17471.41132828253,
+      "neg5lat": -5073.9918738181805,
+      "neg10N": -800.0,
+      "neg05cpu": -2944.780292220269,
+      "neg05mem": -2933.1698758482025
+     },
+     "ticks": 60,
+     "mean_pods": 1.3333333333333333,
+     "label": "val",
+     "n_episodes": 2,
+     "mean_ret": 2859.734643197938,
+     "sd_ret": 38.20831658161869,
+     "components_mean": {
+      "3L": 8735.705664141266,
+      "neg5lat": -2536.9959369090902,
+      "neg10N": -400.0,
+      "neg05cpu": -1472.3901461101345,
+      "neg05mem": -1466.5849379241013
+     },
+     "p95_latency_mean": 22.65888182372764
+    },
+    "test": {
+     "sum5": 2866.2287751228487,
+     "episodes": [
+      {
+       "ret": 2866.2287751228487,
+       "ticks": 30,
+       "mean_pods": 1.3333333333333333,
+       "3L": 8739.13261072019,
+       "neg5lat": -2555.434922269065,
+       "neg10N": -400.0,
+       "neg05cpu": -1449.5730930753234,
+       "neg05mem": -1467.895820252952,
+       "p95_latency": 22.81212377012856,
+       "mean_latency": 17.0362328151271
+      }
+     ],
+     "components_sum5": {
+      "3L": 8739.13261072019,
+      "neg5lat": -2555.434922269065,
+      "neg10N": -400.0,
+      "neg05cpu": -1449.5730930753234,
+      "neg05mem": -1467.895820252952
+     },
+     "ticks": 30,
+     "mean_pods": 1.3333333333333333,
+     "label": "test",
+     "n_episodes": 1,
+     "mean_ret": 2866.2287751228487,
+     "sd_ret": 0.0,
+     "components_mean": {
+      "3L": 8739.13261072019,
+      "neg5lat": -2555.434922269065,
+      "neg10N": -400.0,
+      "neg05cpu": -1449.5730930753234,
+      "neg05mem": -1467.895820252952
+     },
+     "p95_latency_mean": 22.81212377012856
+    },
+    "cpu_s": 0.16846506100000092
+   }
+  },
+  "target_train": {
+   "episode_returns": [],
+   "partial_episode_return": 6370.3752477815315,
+   "partial_episode_ticks": 40,
+   "epsilon_end": 0.8866535105013078,
+   "eval_cpu_s": 0.32010131800000075
+  },
+  "target_train_cpu_s": 3.393734121999998,
+  "eval_cpu_s": 0.32010131800000075,
+  "cpu_s": 5.15601504,
+  "wall_s": 5.176894664764404,
+  "train_cpu_s_per_1k_ticks": 120.88572099999992
+ },
+ "dinos_t_legacy": {
+  "protocol": "c5",
+  "agent": "dinos_t",
+  "arm": "transfer_legacy",
+  "seed": 3,
+  "env_variant": "coupled",
+  "target_env": "lstm_transfer",
+  "target_variant": "coupled",
+  "source_env": "dense",
+  "source_variant": "legacy",
+  "pretrain_ticks": 20,
+  "target_ticks": 30,
+  "total_ticks": 50,
+  "checkpoints": [
+   10,
+   30
+  ],
+  "eval_splits": [
+   "val",
+   "test"
+  ],
+  "eval_seeds": {
+   "val": [
+    1100,
+    1101
+   ],
+   "test": [
+    2000
+   ]
+  },
+  "eval_episode_ticks": 30,
+  "target_stream_seed": [
+   3,
+   5,
+   1
+  ],
+  "source_stream_seed": [
+   3,
+   5,
+   2
+  ],
+  "train_reset_on_done": true,
+  "reset_observation_window": true,
+  "torch_threads": 1,
+  "legacy_root": "~/simulations/redisk8s/timeseries/Pytorch",
+  "pretrain": {
+   "episode_returns": [],
+   "partial_episode_return": 2684.503505436935,
+   "partial_episode_ticks": 20,
+   "epsilon_end": 0.9801495006250001,
+   "eval_cpu_s": 0.0
+  },
+  "init": "pretrained on legacy dense",
+  "epsilon_start": 0.2,
+  "epsilon_min": 0.1,
+  "epsilon_decay": 0.995,
+  "learning_rate": 5e-05,
+  "pretrain_cpu_s": 0.6105835089999996,
+  "checkpoint_results": {
+   "10": {
+    "target_tick": 10,
+    "epsilon_at_checkpoint": 0.2,
+    "val": {
+     "sum5": 5999.663648903527,
+     "episodes": [
+      {
+       "ret": 3022.417653335323,
+       "ticks": 30,
+       "mean_pods": 2.1333333333333333,
+       "3L": 8736.428355839262,
+       "neg5lat": -2310.5239105384103,
+       "neg10N": -640.0,
+       "neg05cpu": -1374.622120553273,
+       "neg05mem": -1388.8646714122565,
+       "p95_latency": 22.469892914594507,
+       "mean_latency": 15.403492736922734
+      },
+      {
+       "ret": 2977.2459955682043,
+       "ticks": 30,
+       "mean_pods": 2.1333333333333333,
+       "3L": 8734.98297244327,
+       "neg5lat": -2348.4300123568396,
+       "neg10N": -640.0,
+       "neg05cpu": -1390.8023591158963,
+       "neg05mem": -1378.5046054023264,
+       "p95_latency": 22.847870732860773,
+       "mean_latency": 15.656200082378929
+      }
+     ],
+     "components_sum5": {
+      "3L": 17471.41132828253,
+      "neg5lat": -4658.95392289525,
+      "neg10N": -1280.0,
+      "neg05cpu": -2765.424479669169,
+      "neg05mem": -2767.369276814583
+     },
+     "ticks": 60,
+     "mean_pods": 2.1333333333333333,
+     "label": "val",
+     "n_episodes": 2,
+     "mean_ret": 2999.8318244517636,
+     "sd_ret": 31.941185524567565,
+     "components_mean": {
+      "3L": 8735.705664141266,
+      "neg5lat": -2329.476961447625,
+      "neg10N": -640.0,
+      "neg05cpu": -1382.7122398345846,
+      "neg05mem": -1383.6846384072915
+     },
+     "p95_latency_mean": 22.65888182372764
+    },
+    "test": {
+     "sum5": 3010.4562908748603,
+     "episodes": [
+      {
+       "ret": 3010.4562908748603,
+       "ticks": 30,
+       "mean_pods": 2.1333333333333333,
+       "3L": 8739.13261072019,
+       "neg5lat": -2354.2081161924593,
+       "neg10N": -640.0,
+       "neg05cpu": -1343.534326710879,
+       "neg05mem": -1390.9338769419903,
+       "p95_latency": 22.81212377012856,
+       "mean_latency": 15.694720774616398
+      }
+     ],
+     "components_sum5": {
+      "3L": 8739.13261072019,
+      "neg5lat": -2354.2081161924593,
+      "neg10N": -640.0,
+      "neg05cpu": -1343.534326710879,
+      "neg05mem": -1390.9338769419903
+     },
+     "ticks": 30,
+     "mean_pods": 2.1333333333333333,
+     "label": "test",
+     "n_episodes": 1,
+     "mean_ret": 3010.4562908748603,
+     "sd_ret": 0.0,
+     "components_mean": {
+      "3L": 8739.13261072019,
+      "neg5lat": -2354.2081161924593,
+      "neg10N": -640.0,
+      "neg05cpu": -1343.534326710879,
+      "neg05mem": -1390.9338769419903
+     },
+     "p95_latency_mean": 22.81212377012856
+    },
+    "cpu_s": 0.15265661199999947
+   },
+   "30": {
+    "target_tick": 30,
+    "epsilon_at_checkpoint": 0.18644602388308096,
+    "val": {
+     "sum5": 5719.469286395876,
+     "episodes": [
+      {
+       "ret": 2886.752002950523,
+       "ticks": 30,
+       "mean_pods": 1.3333333333333333,
+       "3L": 8736.428355839262,
+       "neg5lat": -2519.44404109483,
+       "neg10N": -400.0,
+       "neg05cpu": -1467.4860871006788,
+       "neg05mem": -1462.7462246932303,
+       "p95_latency": 22.469892914594507,
+       "mean_latency": 16.796293607298864
+      },
+      {
+       "ret": 2832.717283445353,
+       "ticks": 30,
+       "mean_pods": 1.3333333333333333,
+       "3L": 8734.98297244327,
+       "neg5lat": -2554.54783272335,
+       "neg10N": -400.0,
+       "neg05cpu": -1477.2942051195905,
+       "neg05mem": -1470.4236511549723,
+       "p95_latency": 22.847870732860773,
+       "mean_latency": 17.030318884822332
+      }
+     ],
+     "components_sum5": {
+      "3L": 17471.41132828253,
+      "neg5lat": -5073.9918738181805,
+      "neg10N": -800.0,
+      "neg05cpu": -2944.780292220269,
+      "neg05mem": -2933.1698758482025
+     },
+     "ticks": 60,
+     "mean_pods": 1.3333333333333333,
+     "label": "val",
+     "n_episodes": 2,
+     "mean_ret": 2859.734643197938,
+     "sd_ret": 38.20831658161869,
+     "components_mean": {
+      "3L": 8735.705664141266,
+      "neg5lat": -2536.9959369090902,
+      "neg10N": -400.0,
+      "neg05cpu": -1472.3901461101345,
+      "neg05mem": -1466.5849379241013
+     },
+     "p95_latency_mean": 22.65888182372764
+    },
+    "test": {
+     "sum5": 2866.2287751228487,
+     "episodes": [
+      {
+       "ret": 2866.2287751228487,
+       "ticks": 30,
+       "mean_pods": 1.3333333333333333,
+       "3L": 8739.13261072019,
+       "neg5lat": -2555.434922269065,
+       "neg10N": -400.0,
+       "neg05cpu": -1449.5730930753234,
+       "neg05mem": -1467.895820252952,
+       "p95_latency": 22.81212377012856,
+       "mean_latency": 17.0362328151271
+      }
+     ],
+     "components_sum5": {
+      "3L": 8739.13261072019,
+      "neg5lat": -2555.434922269065,
+      "neg10N": -400.0,
+      "neg05cpu": -1449.5730930753234,
+      "neg05mem": -1467.895820252952
+     },
+     "ticks": 30,
+     "mean_pods": 1.3333333333333333,
+     "label": "test",
+     "n_episodes": 1,
+     "mean_ret": 2866.2287751228487,
+     "sd_ret": 0.0,
+     "components_mean": {
+      "3L": 8739.13261072019,
+      "neg5lat": -2555.434922269065,
+      "neg10N": -400.0,
+      "neg05cpu": -1449.5730930753234,
+      "neg05mem": -1467.895820252952
+     },
+     "p95_latency_mean": 22.81212377012856
+    },
+    "cpu_s": 0.13610057100000006
+   }
+  },
+  "target_train": {
+   "episode_returns": [],
+   "partial_episode_return": 3036.225291499836,
+   "partial_episode_ticks": 30,
+   "epsilon_end": 0.18644602388308096,
+   "eval_cpu_s": 0.2888266270000006
+  },
+  "target_train_cpu_s": 1.874148408,
+  "eval_cpu_s": 0.2888266270000006,
+  "cpu_s": 2.7740223660000005,
+  "wall_s": 2.776092529296875,
+  "train_cpu_s_per_1k_ticks": 49.69463833999999
+ },
+ "derp": {
+  "protocol": "c5",
+  "agent": "derp",
+  "arm": "derp",
+  "seed": 3,
+  "env_variant": "coupled",
+  "target_env": "lstm_transfer",
+  "target_variant": "coupled",
+  "source_env": null,
+  "source_variant": null,
+  "pretrain_ticks": 0,
+  "target_ticks": 40,
+  "total_ticks": 40,
+  "checkpoints": [
+   40
+  ],
+  "eval_splits": [
+   "val",
+   "test"
+  ],
+  "eval_seeds": {
+   "val": [
+    1100,
+    1101
+   ],
+   "test": [
+    2000
+   ]
+  },
+  "eval_episode_ticks": 30,
+  "target_stream_seed": [
+   3,
+   5,
+   1
+  ],
+  "source_stream_seed": null,
+  "train_reset_on_done": true,
+  "reset_observation_window": true,
+  "torch_threads": 1,
+  "legacy_root": "~/simulations/redisk8s/timeseries/Pytorch",
+  "epsilon_start": 1.0,
+  "epsilon_min": 0.01,
+  "epsilon_decay": 0.995,
+  "learning_rate": 0.0001,
+  "pretrain_cpu_s": 0.001210581000000488,
+  "checkpoint_results": {
+   "40": {
+    "target_tick": 40,
+    "epsilon_at_checkpoint": 0.8866535105013078,
+    "val": {
+     "sum5": 5343.984457581658,
+     "episodes": [
+      {
+       "ret": 2698.6924817018494,
+       "ticks": 30,
+       "mean_pods": 16.966666666666665,
+       "3L": 8736.428355839262,
+       "neg5lat": -156.1576008008253,
+       "neg10N": -5090.0,
+       "neg05cpu": -375.59652976672965,
+       "neg05mem": -415.98174356985714,
+       "p95_latency": 1.1521745567903752,
+       "mean_latency": 1.041050672005502
+      },
+      {
+       "ret": 2645.2919758798084,
+       "ticks": 30,
+       "mean_pods": 16.966666666666665,
+       "3L": 8734.98297244327,
+       "neg5lat": -158.60504498712336,
+       "neg10N": -5090.0,
+       "neg05cpu": -421.5602560688973,
+       "neg05mem": -419.5256955074372,
+       "p95_latency": 1.1723504640273508,
+       "mean_latency": 1.0573669665808223
+      }
+     ],
+     "components_sum5": {
+      "3L": 17471.41132828253,
+      "neg5lat": -314.76264578794866,
+      "neg10N": -10180.0,
+      "neg05cpu": -797.1567858356269,
+      "neg05mem": -835.5074390772943
+     },
+     "ticks": 60,
+     "mean_pods": 16.966666666666665,
+     "label": "val",
+     "n_episodes": 2,
+     "mean_ret": 2671.992228790829,
+     "sd_ret": 37.75985978555686,
+     "components_mean": {
+      "3L": 8735.705664141266,
+      "neg5lat": -157.38132289397433,
+      "neg10N": -5090.0,
+      "neg05cpu": -398.57839291781346,
+      "neg05mem": -417.75371953864715
+     },
+     "p95_latency_mean": 1.1622625104088629
+    },
+    "test": {
+     "sum5": 2666.180144648517,
+     "episodes": [
+      {
+       "ret": 2666.180144648517,
+       "ticks": 30,
+       "mean_pods": 16.966666666666665,
+       "3L": 8739.13261072019,
+       "neg5lat": -156.2771932954709,
+       "neg10N": -5090.0,
+       "neg05cpu": -401.01414279000323,
+       "neg05mem": -425.6611299861992,
+       "p95_latency": 1.140606188506428,
+       "mean_latency": 1.0418479553031395
+      }
+     ],
+     "components_sum5": {
+      "3L": 8739.13261072019,
+      "neg5lat": -156.2771932954709,
+      "neg10N": -5090.0,
+      "neg05cpu": -401.01414279000323,
+      "neg05mem": -425.6611299861992
+     },
+     "ticks": 30,
+     "mean_pods": 16.966666666666665,
+     "label": "test",
+     "n_episodes": 1,
+     "mean_ret": 2666.180144648517,
+     "sd_ret": 0.0,
+     "components_mean": {
+      "3L": 8739.13261072019,
+      "neg5lat": -156.2771932954709,
+      "neg10N": -5090.0,
+      "neg05cpu": -401.01414279000323,
+      "neg05mem": -425.6611299861992
+     },
+     "p95_latency_mean": 1.140606188506428
+    },
+    "cpu_s": 0.04003491099999934
+   }
+  },
+  "target_train": {
+   "episode_returns": [],
+   "partial_episode_return": 6398.514063907697,
+   "partial_episode_ticks": 40,
+   "epsilon_end": 0.8866535105013078,
+   "eval_cpu_s": 0.04006370399999959
+  },
+  "target_train_cpu_s": 0.6014145000000006,
+  "eval_cpu_s": 0.04006370399999959,
+  "cpu_s": 0.6430260880000009,
+  "wall_s": 0.6430642604827881,
+  "train_cpu_s_per_1k_ticks": 15.065627025000028
+ }
+}

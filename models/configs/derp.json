@@ -1,0 +1,17 @@
+{
+  "model": "derp",
+  "kind": "dense",
+  "input_size": 6,
+  "layers": [
+    {
+      "units": 128,
+      "activation": "relu"
+    },
+    {
+      "units": 128,
+      "activation": "relu"
+    }
+  ],
+  "output_size": 3,
+  "output_activation": "linear"
+}

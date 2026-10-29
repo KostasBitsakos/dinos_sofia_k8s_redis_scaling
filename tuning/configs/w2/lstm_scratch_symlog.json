@@ -1,0 +1,1 @@
+{"agent": "lstm_scratch", "agent_options": {"eps_schedule": "linear", "eps_start": 1.0, "eps_end": 0.05, "eps_decay_steps": 20000, "reward_transform": "symlog", "grad_clip": 10.0}}

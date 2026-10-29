@@ -1,0 +1,11 @@
+# save as test-redis-pod.yaml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: redis-test
+spec:
+  containers:
+  - name: redis
+    image: redis/redis-stack-server:latest
+    ports:
+    - containerPort: 6379
