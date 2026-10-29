@@ -1,0 +1,1 @@
+{"agent": "dinos_t", "pretrained": 5, "input_map": "pretrain", "agent_options": {"eps_schedule": "linear", "eps_start": 1.0, "eps_end": 0.05, "eps_decay_steps": 20000, "reward_clip": 5.0, "grad_clip": 10.0, "reset_head": true}}

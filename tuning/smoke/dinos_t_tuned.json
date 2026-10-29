@@ -1,0 +1,144 @@
+{
+ "config": {
+  "agent": "dinos_t",
+  "pretrained": 5,
+  "input_map": "none",
+  "agent_options": {
+   "reset_head": true,
+   "eps_schedule": "linear",
+   "eps_start": 1.0,
+   "eps_end": 0.05,
+   "eps_decay_steps": 20000
+  }
+ },
+ "train_seed": 0,
+ "train_steps": 2000,
+ "reward_mode": "dinos",
+ "eval_seeds": [
+  1000,
+  1001,
+  1002,
+  1003,
+  1004
+ ],
+ "eval": [
+  {
+   "seed": 1000,
+   "steps": 5000,
+   "ret": -72648532.60785733,
+   "pod_changes": 0,
+   "reversals": 0,
+   "scale_up": 0,
+   "scale_down": 0,
+   "mean_pods": 6.0,
+   "sla_violation_rate": 0.8711063739531416,
+   "bad_requests": 465289051.51371145,
+   "action_counts": [
+    0,
+    5000,
+    0
+   ]
+  },
+  {
+   "seed": 1001,
+   "steps": 5000,
+   "ret": -72751194.07615465,
+   "pod_changes": 0,
+   "reversals": 0,
+   "scale_up": 0,
+   "scale_down": 0,
+   "mean_pods": 6.0,
+   "sla_violation_rate": 0.872119465846208,
+   "bad_requests": 467257792.06067646,
+   "action_counts": [
+    0,
+    5000,
+    0
+   ]
+  },
+  {
+   "seed": 1002,
+   "steps": 5000,
+   "ret": -72750584.55119157,
+   "pod_changes": 0,
+   "reversals": 0,
+   "scale_up": 0,
+   "scale_down": 0,
+   "mean_pods": 6.0,
+   "sla_violation_rate": 0.8716433624710404,
+   "bad_requests": 466519594.0414274,
+   "action_counts": [
+    0,
+    5000,
+    0
+   ]
+  },
+  {
+   "seed": 1003,
+   "steps": 5000,
+   "ret": -72560474.4056619,
+   "pod_changes": 0,
+   "reversals": 0,
+   "scale_up": 0,
+   "scale_down": 0,
+   "mean_pods": 6.0,
+   "sla_violation_rate": 0.8690339626618615,
+   "bad_requests": 459830517.39649445,
+   "action_counts": [
+    0,
+    5000,
+    0
+   ]
+  },
+  {
+   "seed": 1004,
+   "steps": 5000,
+   "ret": -72559997.39249769,
+   "pod_changes": 0,
+   "reversals": 0,
+   "scale_up": 0,
+   "scale_down": 0,
+   "mean_pods": 6.0,
+   "sla_violation_rate": 0.8703906793771694,
+   "bad_requests": 462453342.91008234,
+   "action_counts": [
+    0,
+    5000,
+    0
+   ]
+  }
+ ],
+ "eval_mean_return": -72654156.60667261,
+ "eval_mean_pods": 6.0,
+ "eval_mean_pod_changes": 0.0,
+ "train_episodes": [
+  {
+   "steps": 2000,
+   "ret": -30568679.23445673,
+   "pod_changes": 1249,
+   "reversals": 0,
+   "scale_up": 1249,
+   "scale_down": 0,
+   "mean_pods": 8.818,
+   "sla_violation_rate": 0.7880285404657187,
+   "bad_requests": 174207686.04159006,
+   "action_counts": [
+    674,
+    687,
+    639
+   ],
+   "episode": 0,
+   "sim_seed": 459,
+   "complete": false,
+   "end_step": 2000,
+   "epsilon_end": 0.9050475,
+   "td_loss": 307.4457869798906,
+   "mean_abs_q": 13.354949951171875,
+   "mean_abs_td": 363.2046203613281
+  }
+ ],
+ "train_wall_s": 43.322548627853394,
+ "train_cpu_s": 43.206484617,
+ "cpu_s_per_1k_steps": 21.6032423085,
+ "grad_updates": 0
+}

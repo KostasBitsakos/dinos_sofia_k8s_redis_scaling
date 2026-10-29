@@ -1,0 +1,1 @@
+{"agent": "derp", "learn_scale": 0.001, "agent_options": {"batched_double_dqn": true, "target_update_every": 100, "memory_size": 5000, "lr": 5e-05, "eps_schedule": "linear", "eps_start": 1.0, "eps_end": 0.05, "eps_decay_steps": 75000, "huber_beta": 1.0, "grad_clip": 10.0, "n_step": 3, "explore_repeat_max": 8, "decision_every": 4, "scale_down_cooldown": 20}}

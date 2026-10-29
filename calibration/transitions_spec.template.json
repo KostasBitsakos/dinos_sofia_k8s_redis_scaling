@@ -1,0 +1,170 @@
+{
+  "name": "simv2-calibration-stageB-transitions-TEMPLATE",
+  "scope": "real",
+  "cwd": "code/calibration",
+  "entries": [
+    {
+      "name": "00-create-namespace-deployment-service",
+      "seed": 0,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--",
+        "kubectl",
+        "--context",
+        "kubernetes-admin@kubernetes",
+        "--namespace",
+        "qrl-calib",
+        "apply",
+        "-f",
+        "k8s/qrl-calib.yaml"
+      ]
+    },
+    {
+      "name": "01-wait-for-3-pods",
+      "seed": 0,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--",
+        "kubectl",
+        "--context",
+        "kubernetes-admin@kubernetes",
+        "--namespace",
+        "qrl-calib",
+        "rollout",
+        "status",
+        "deployment/redis-autoscale-cluster",
+        "--timeout=180s"
+      ]
+    },
+    {
+      "name": "02-bootstrap-cluster-3",
+      "seed": 0,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--",
+        "../../.venv/bin/python",
+        "scale_to.py",
+        "--bootstrap",
+        "3"
+      ]
+    },
+    {
+      "name": "transitions-2-3",
+      "seed": 202,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_transition.py",
+        "--lo",
+        "2",
+        "--hi",
+        "3",
+        "--capacity",
+        "TEMPLATE_FILL_C_HI_FROM_STAGE_A",
+        "--reps",
+        "3",
+        "--seed",
+        "202"
+      ]
+    },
+    {
+      "name": "transitions-4-5",
+      "seed": 204,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_transition.py",
+        "--lo",
+        "4",
+        "--hi",
+        "5",
+        "--capacity",
+        "TEMPLATE_FILL_C_HI_FROM_STAGE_A",
+        "--reps",
+        "3",
+        "--seed",
+        "204"
+      ]
+    },
+    {
+      "name": "transitions-8-9",
+      "seed": 208,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_transition.py",
+        "--lo",
+        "8",
+        "--hi",
+        "9",
+        "--capacity",
+        "TEMPLATE_FILL_C_HI_FROM_STAGE_A",
+        "--reps",
+        "3",
+        "--seed",
+        "208"
+      ]
+    },
+    {
+      "name": "transitions-16-17",
+      "seed": 216,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--health",
+        "--",
+        "../../.venv/bin/python",
+        "run_transition.py",
+        "--lo",
+        "16",
+        "--hi",
+        "17",
+        "--capacity",
+        "TEMPLATE_FILL_C_HI_FROM_STAGE_A",
+        "--reps",
+        "3",
+        "--seed",
+        "216"
+      ]
+    },
+    {
+      "name": "rollback-delete-namespace",
+      "seed": 0,
+      "cmd": [
+        "../../.venv/bin/python",
+        "gate.py",
+        "--allow-failed",
+        "--",
+        "bash",
+        "rollback.sh"
+      ]
+    }
+  ],
+  "max_parallel": 1,
+  "max_attempts": 1,
+  "limits": {
+    "wall_clock_hours": 1.0
+  },
+  "real": {
+    "kube_context": "kubernetes-admin@kubernetes",
+    "namespace": "qrl-calib",
+    "deployment": "redis-autoscale-cluster",
+    "rollback": "bash code/calibration/rollback.sh  (kubectl delete namespace qrl-calib; the default namespace is never touched)",
+    "resource_limits": "<= 30 pods x (150m/8Mi requests, 200m/16Mi limits) in qrl-calib; load generator on the host, <= 8 worker processes; a memory trip (pod cgroup working set > 95% of 16Mi, fork/rewrite near the limit, unreadable memory) stops all scaling and triggers recovery",
+    "data_loss": "accepted by the researcher for the calibration namespace (R-20261016-018, 2026-10-16)",
+    "entries_must_run_in_order": true,
+    "entry_gating": "every entry runs through gate.py: previous entry must have succeeded, else rollback.sh runs and the entry refuses (tools/launch_run.py does not stop dependent entries); sweep/transition entries also require a healthy cluster"
+  }
+}

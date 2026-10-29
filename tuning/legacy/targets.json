@@ -1,0 +1,64 @@
+{
+ "_doc": "Recompute the legacy reference numbers used by tuning/closeness.py --target legacy-orig|legacy-fair, from the\nORIGINAL trained weights (read-only, P = ~/simulations/redisk8s/timeseries/Pytorch) run through the verbatim port.\n\n  orig (reproduction of figure protocol):\n    derp   P/dense/doubledeepfinal.py: fresh agent, epsilon 1.0 -> uniform random actions whatever the weights;\n           mean over seeds 0..N-1 of the 5-run sum (no reset: 5000 + 4 x 1 ticks)\n    dinos  P/lstm_transfer/lstm_transfer.py replay of the evaluated policies (run_legacy.dinos_orig_logged_model):\n           model 1 = saved fine-tuned weights at the post-fine-tune epsilon, models 2..20 = base weights at 0.2; seed 0\n  fair (greedy, reset, eval seeds 1000-1004):\n    derp   P/dense/modelCPU_{N}.pth on the dense env\n    dinos  the policies the original pipeline actually evaluated: P/lstm_transfer/final_metrics_lstm/modelCPU_1_fine_tuned.pth\n           for model 1, the base P/lstm_transfer/modelCPU_{N}.pth for N = 2..20 (their fine-tuning was a no-op)\nTarget per protocol and agent = mean over the 5 models. Writes tuning/legacy/targets.json.\n",
+ "logged_sums_models_1_2_5_10_20": {
+  "derp": [
+   286672,
+   259386,
+   218389,
+   197408,
+   152188
+  ],
+  "rs": [
+   253531,
+   209063,
+   216908,
+   324216,
+   249457
+  ],
+  "dinos": [
+   3280882,
+   3617616,
+   3616592,
+   2822113,
+   3228498
+  ],
+  "hpa": [
+   -1036558,
+   -1032121,
+   -1034987,
+   -1031488,
+   -1035403
+  ]
+ },
+ "legacy-orig": {
+  "derp": 251646.15141616188,
+  "dinos": 3324447.5902801063,
+  "derp_random_seeds": 100,
+  "derp_random_sd": 57654.023954151475,
+  "dinos_per_model": {
+   "1": 3295448.4567054794,
+   "2": 3620537.3736737627,
+   "5": 3620537.3736737627,
+   "10": 2819337.373673763,
+   "20": 3266377.3736737627
+  }
+ },
+ "legacy-fair": {
+  "derp": 2042071.7619298801,
+  "dinos": 3477966.233149071,
+  "derp_per_model": {
+   "1": 3632643.761929879,
+   "2": 3641013.761929879,
+   "5": -94086.23807011935,
+   "10": -609596.2380701185,
+   "20": 3640383.761929879
+  },
+  "dinos_per_model": {
+   "1": 3615626.23314907,
+   "2": 3640826.2331490703,
+   "5": 3640826.2331490703,
+   "10": 2876316.233149075,
+   "20": 3616236.2331490694
+  }
+ }
+}

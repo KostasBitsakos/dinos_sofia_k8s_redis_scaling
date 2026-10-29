@@ -1,0 +1,12 @@
+{
+  "_comment": "Frozen Sim v2 gate suite (council C-20261016-01). Do not edit after the gate spec is approved.",
+  "workloads": ["W0", "W1", "W3"],
+  "heldout_seeds_start": 10000,
+  "n_seeds": 10,
+  "tune_seeds": [1000, 1001, 1002, 1003, 1004],
+  "threshold_grid": {"up": [40, 50, 60, 70, 80], "down": [10, 20, 30, 40, 50], "cooldown": [0, 1, 2, 4, 8]},
+  "alpha_one_sided": 0.025,
+  "tolerances": {"conservation_rel": 1e-9, "oracle_abs": 1e-6, "oracle_rel": 1e-9},
+  "sensitivity": {"theta": [0.8, 0.9, 1.0], "delta_factor": [0.5, 1.0, 1.5]},
+  "param_overrides": {}
+}

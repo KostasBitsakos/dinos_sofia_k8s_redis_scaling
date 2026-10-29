@@ -1,0 +1,43 @@
+# Use a base image that has Go pre-installed or is suitable for installing Go.
+# Alpine is fine, but we need to ensure Go modules work correctly.
+FROM golang:alpine as builder
+
+# Install bash, sed, and git. Go is already included in the golang:alpine image.
+RUN apk add --no-cache bash sed git
+
+# Set the working directory inside the container.
+WORKDIR /app
+
+# Assuming you have a Go application that you need to build:
+# Copy go.mod and go.sum for module dependencies.
+COPY go.mod go.sum ./
+
+# Download the Go module dependencies.
+RUN go mod download
+
+# Copy the rest of your application's source code.
+COPY . .
+
+# Build your Go application. Replace 'yourapp' with your application's package.
+# This command compiles your Go app for Alpine.
+RUN CGO_ENABLED=0 GOOS=linux go build -o redis-cluster-go-coordinator .
+
+# Use a fresh alpine image to start a clean, lean container.
+FROM alpine:latest
+
+# Copy the compiled binary from the builder image.
+COPY --from=builder /app/redis-cluster-go-coordinator /usr/local/bin/
+
+# Install redis.
+RUN apk add --no-cache redis
+
+# Copy configuration files and scripts from your host to the container.
+COPY redis.conf /redis.conf
+COPY entrypoint.sh /entrypoint.sh
+
+# Ensure the entrypoint script is executable.
+RUN chmod +x /entrypoint.sh
+
+# Set the entrypoint script to run when the container starts.
+ENTRYPOINT ["/entrypoint.sh"]
+

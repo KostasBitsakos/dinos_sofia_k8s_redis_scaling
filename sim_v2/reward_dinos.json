@@ -1,0 +1,14 @@
+{
+ "_comment": "R-20261017-023: default reward = V2 (mean latency, failed at 60 s; U from offered demand); the old p95/served definition is variant legacy_p95, selected with SimParams.dinos_variant='legacy_p95'. Frozen constants of the DInos-style reward adapter (R-20261017-017, council C-20261017-02). r = c_load*L - c_latency*D - c_pods*N - c_cpu*U - c_mem*M. Coefficients verbatim from ~/simulations/redisk8s/timeseries/Pytorch/Quantum/environment.py:90-94 (load 3.0, latency 5.0, vm 10.0, cpu 0.5, memory 0.5). memory_pct = 52.5 is a PLACEHOLDER: midpoint of the old sim's uniform memory_range (40,65), environment.py:10-11; calibration stage B replaces it.",
+ "c_load": 3.0,
+ "c_latency": 5.0,
+ "c_pods": 10.0,
+ "c_cpu": 0.5,
+ "c_mem": 0.5,
+ "load_scale": 10.0,
+ "memory_pct": 52.5,
+ "latency_tail": 0.05,
+ "d_def": "mean",
+ "u_def": "offered",
+ "variants": {"default": {"d_def": "mean", "u_def": "offered"}, "legacy_p95": {"d_def": "p95", "u_def": "served"}, "V1": {"d_def": "mean", "u_def": "served"}, "V2": {"d_def": "mean", "u_def": "offered"}, "V3": {"d_def": "p95", "u_def": "offered"}}
+}

@@ -1,0 +1,134 @@
+{
+ "name": "simv2-calibration-stageB-optional-c16",
+ "scope": "real",
+ "cwd": "code/calibration",
+ "max_parallel": 1,
+ "max_attempts": 1,
+ "limits": {
+  "wall_clock_hours": 1.5
+ },
+ "real": {
+  "kube_context": "kubernetes-admin@kubernetes",
+  "namespace": "qrl-calib",
+  "deployment": "redis-autoscale-cluster",
+  "rollback": "bash code/calibration/rollback.sh  (kubectl delete namespace qrl-calib; the default namespace is never touched)",
+  "resource_limits": "namespace qrl-calib only; <= 17 pods; pod limits either 150m/8Mi requests + 200m/16Mi limits (as production) or 50m/8Mi requests + 50m/16Mi limits (stage-B variant k8s/qrl-calib-50m.yaml); load generator on the host: <= 16 worker processes (stage A approval was <= 8: NEW, explicit approval item); a memory trip (pod cgroup working set > 95% of 16Mi, fork/rewrite near the limit, unreadable memory) stops all scaling and triggers recovery",
+  "data_loss": "accepted by the researcher for the calibration namespace (R-20261016-018, 2026-10-16)",
+  "entries_must_run_in_order": true,
+  "entry_gating": "every entry runs through gate.py: previous entry must have succeeded, else rollback.sh runs and the entry refuses; sweep/transition entries also require a healthy cluster"
+ },
+ "entries": [
+  {
+   "name": "create-50m",
+   "seed": 0,
+   "cmd": [
+    "../../.venv/bin/python",
+    "gate.py",
+    "--",
+    "kubectl",
+    "--context",
+    "kubernetes-admin@kubernetes",
+    "--namespace",
+    "qrl-calib",
+    "apply",
+    "-f",
+    "k8s/qrl-calib-50m.yaml"
+   ]
+  },
+  {
+   "name": "wait-3-pods-50m",
+   "seed": 0,
+   "cmd": [
+    "../../.venv/bin/python",
+    "gate.py",
+    "--",
+    "kubectl",
+    "--context",
+    "kubernetes-admin@kubernetes",
+    "--namespace",
+    "qrl-calib",
+    "rollout",
+    "status",
+    "deployment/redis-autoscale-cluster",
+    "--timeout=180s"
+   ]
+  },
+  {
+   "name": "bootstrap-cluster-3-50m",
+   "seed": 0,
+   "cmd": [
+    "../../.venv/bin/python",
+    "gate.py",
+    "--",
+    "../../.venv/bin/python",
+    "scale_to.py",
+    "--bootstrap",
+    "3"
+   ]
+  },
+  {
+   "name": "sweep-50m-c16-a",
+   "seed": 2001,
+   "cmd": [
+    "../../.venv/bin/python",
+    "gate.py",
+    "--health",
+    "--",
+    "../../.venv/bin/python",
+    "run_c.py",
+    "--c",
+    "16",
+    "--seed",
+    "2001",
+    "--tag",
+    "50m",
+    "--workers",
+    "16",
+    "--fractions",
+    "0.03,0.1,0.3,0.5,0.7,0.85,0.95,1.05,1.2,1.5,2.0",
+    "--level-s",
+    "30",
+    "--max-rate",
+    "700000"
+   ]
+  },
+  {
+   "name": "sweep-50m-c16-b",
+   "seed": 2002,
+   "cmd": [
+    "../../.venv/bin/python",
+    "gate.py",
+    "--health",
+    "--",
+    "../../.venv/bin/python",
+    "run_c.py",
+    "--c",
+    "16",
+    "--seed",
+    "2002",
+    "--tag",
+    "50m",
+    "--workers",
+    "16",
+    "--fractions",
+    "0.03,0.1,0.3,0.5,0.7,0.85,0.95,1.05,1.2,1.5,2.0",
+    "--level-s",
+    "30",
+    "--max-rate",
+    "700000"
+   ]
+  },
+  {
+   "name": "rollback-delete-namespace-final",
+   "seed": 0,
+   "cmd": [
+    "../../.venv/bin/python",
+    "gate.py",
+    "--allow-failed",
+    "--",
+    "bash",
+    "rollback.sh"
+   ]
+  }
+ ]
+}

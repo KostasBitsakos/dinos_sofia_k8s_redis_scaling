@@ -1,0 +1,67 @@
+{
+  "_comment": "Sim v2.1 protocol rev 1 gate, frozen BEFORE any rev-1 run (R-20261017-012 option 1). See PREREG_rev1.md.",
+  "protocol": "Sim v2.1 protocol rev 1",
+  "workload": "W0",
+  "config": "default",
+  "c0": 6,
+  "threshold": [
+    40,
+    25,
+    0
+  ],
+  "selection_seeds": [
+    1000,
+    1001,
+    1002,
+    1003,
+    1004
+  ],
+  "eval_seeds": [
+    1200,
+    1201,
+    1202,
+    1203,
+    1204,
+    1205,
+    1206,
+    1207,
+    1208,
+    1209
+  ],
+  "static_ramp_candidates": "all integers min_pods..max_pods (1..30), mean return on selection_seeds",
+  "startup_steps": 150,
+  "bootstrap": {
+    "resamples": 10000,
+    "seed": 20261017,
+    "level": 0.95,
+    "method": "percentile, paired episodes"
+  },
+  "pass_iff": [
+    "mean paired return difference (threshold - static_ramp_best) > 0 AND lower end of the 95% bootstrap CI > 0",
+    "threshold beats always_min (paired mean difference > 0)",
+    "threshold beats always_max (paired mean difference > 0)",
+    "mean oracle replay return >= mean threshold return"
+  ],
+  "reported_not_gated": [
+    "preprovisioned fixed_best (c from the original preflight)",
+    "startup vs rest split",
+    "win counts"
+  ],
+  "burned_seeds": {
+    "1100-1109": "first choice for the gate; evaluated by a smoke test (Codex review of 03832b4/b24b7e7), so burned and never used for the gate"
+  },
+  "original_preflight": {
+    "run": "20261017-140714-R-20261017-004-e0-a1",
+    "path": "/home/ubuntu/qrl-lab/.lab/runs/20261017-140714-R-20261017-004-e0-a1/preflight.json",
+    "sha256": "60023e4c6460dd4ffd2ce3c68190bca056345441026650b5760ea2c8e1bc8ccf",
+    "gate_passed": false,
+    "fixed_best_c": 22
+  },
+  "oracle_tolerance_abs": 1e-09,
+  "scoring_horizon_steps": 5000,
+  "terminal_backlog_rule": "work still queued at the end of the episode is settled as failed (counted bad once), as in sim_v2/env.py",
+  "static_ramp_tie_break": "smallest c among candidates with exactly equal mean return on the selection seeds",
+  "final_test_reservation": "seeds 20000-20999 are untouched by rev 1 and reserved for the final evaluation",
+  "n_eval_episodes": 10,
+  "sensitivity_policy": "gate is evaluated on the default config only; sensitivity configs are reported afterwards, descriptive and non-gating, for (a) the frozen controls and (b) controls re-selected per config on seeds 1000-1004"
+}

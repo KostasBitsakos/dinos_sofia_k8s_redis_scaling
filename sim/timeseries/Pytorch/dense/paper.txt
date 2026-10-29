@@ -1,0 +1,55 @@
+1. Introduction
+What to include:
+Overview of Kubernetes (K8s) as a container orchestration platform and its importance in modern distributed systems.
+The role of Redis as an in-memory store and its common use in stateless architectures.
+The limitations of the Horizontal Pod Autoscaler (HPA), particularly in environments with dynamic workloads.
+The motivation for exploring a deep reinforcement learning (RL) approach to improve scalability and resource efficiency.
+Brief description of the contributions of your paper: the comparison between HPA, dense RL agents, and LSTM-based RL agents, and the improvements achieved.
+2. Background and Related Work
+What to include:
+Detailed explanation of the HPA and how it functions, emphasizing its limitations (reactive scaling, CPU/memory utilization as the sole metrics).
+Overview of Redis and its significance in Kubernetes environments.
+Related work on autoscaling techniques in cloud environments, particularly with deep learning and reinforcement learning approaches.
+Discussion of similar studies and how your work differs or builds upon existing methods.
+3. System Design
+What to include:
+Architecture of your Kubernetes/Redis setup and the placement of your RL agents within it.
+Detailed description of the deep RL agents: one with dense layers and the other with LSTM layers.
+Explanation of how the LSTM layers capture temporal patterns in workloads, providing a more intelligent scaling mechanism.
+Design of the reward function in your RL agents, which takes into account load, latency, CPU and memory usage, VM count, etc.
+Overview of the simulation environment used to test the RL agents.
+4. Implementation
+What to include:
+Details on how the RL agents were trained, including the input features (e.g., Redis requests, CPU, memory usage) and training data.
+How the Redis cluster was configured within Kubernetes for testing the autoscaling behavior.
+Modifications made to the Kubernetes environment to incorporate the RL agents, and how the HPA was disabled.
+Any technical challenges you faced during implementation, such as handling latency, dynamic workloads, or VM penalties.
+5. Evaluation
+What to include:
+Setup for your experiments: hardware, software, and metrics used (load, CPU, memory, etc.).
+Comparison between the three methods: HPA, RL with dense layers, and RL with LSTM layers.
+Quantitative results demonstrating:
+500% improvement in cost efficiency over the HPA.
+40% performance improvement of the LSTM-based RL agent over the dense agent.
+Visualizations (plots) of key metrics like pod count, latency, and CPU/memory usage over time.
+6. Discussion
+What to include:
+Analysis of the results, including why the RL agents outperform HPA.
+Discussion of the trade-offs between dense and LSTM-based RL agents.
+Limitations of the current approach, including potential scalability issues or edge cases.
+How the model’s performance might change in other environments or with different workloads.
+7. Conclusion and Future Work
+What to include:
+Summarize the key findings of the paper.
+Restate the contributions of your work in improving Kubernetes/Redis scalability through deep reinforcement learning.
+Future directions for research, such as:
+Expanding the RL model to handle more complex workloads.
+Testing in other distributed database systems.
+Integrating the RL agents with other metrics or cloud-native tools.
+8. References
+What to include:
+Citations for all the papers, tools, and systems mentioned in the related work and throughout the paper.
+Use proper citation format, adhering to the ACM guidelines for formatting references.
+9. Appendices (optional)
+What to include:
+Supplementary material, such as detailed configurations, datasets, or additional graphs that may be of interest but are not essential to the main content of the paper.

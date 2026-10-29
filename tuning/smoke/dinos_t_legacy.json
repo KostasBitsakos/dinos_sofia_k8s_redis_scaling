@@ -1,0 +1,137 @@
+{
+ "config": {
+  "agent": "dinos_t",
+  "pretrained": 5,
+  "agent_options": {}
+ },
+ "train_seed": 0,
+ "train_steps": 2000,
+ "reward_mode": "dinos",
+ "eval_seeds": [
+  1000,
+  1001,
+  1002,
+  1003,
+  1004
+ ],
+ "eval": [
+  {
+   "seed": 1000,
+   "steps": 5000,
+   "ret": -2456237.6336128595,
+   "pod_changes": 2267,
+   "reversals": 0,
+   "scale_up": 2267,
+   "scale_down": 0,
+   "mean_pods": 12.348,
+   "sla_violation_rate": 0.23458033590680077,
+   "bad_requests": 125297742.34405316,
+   "action_counts": [
+    1131,
+    2732,
+    1137
+   ]
+  },
+  {
+   "seed": 1001,
+   "steps": 5000,
+   "ret": -2266442.778502112,
+   "pod_changes": 2223,
+   "reversals": 0,
+   "scale_up": 2223,
+   "scale_down": 0,
+   "mean_pods": 12.3704,
+   "sla_violation_rate": 0.23020525982644965,
+   "bad_requests": 123337691.26789512,
+   "action_counts": [
+    1105,
+    2774,
+    1121
+   ]
+  },
+  {
+   "seed": 1002,
+   "steps": 5000,
+   "ret": -3491804.384729683,
+   "pod_changes": 2583,
+   "reversals": 0,
+   "scale_up": 2583,
+   "scale_down": 0,
+   "mean_pods": 12.5476,
+   "sla_violation_rate": 0.2955881134460663,
+   "bad_requests": 158204206.70376155,
+   "action_counts": [
+    1288,
+    2414,
+    1298
+   ]
+  },
+  {
+   "seed": 1003,
+   "steps": 5000,
+   "ret": -1773208.5012550927,
+   "pod_changes": 2252,
+   "reversals": 0,
+   "scale_up": 2252,
+   "scale_down": 0,
+   "mean_pods": 12.2832,
+   "sla_violation_rate": 0.22749748140021994,
+   "bad_requests": 120375369.74762176,
+   "action_counts": [
+    1123,
+    2748,
+    1129
+   ]
+  },
+  {
+   "seed": 1004,
+   "steps": 5000,
+   "ret": -2122745.4355462114,
+   "pod_changes": 2234,
+   "reversals": 0,
+   "scale_up": 2234,
+   "scale_down": 0,
+   "mean_pods": 12.268,
+   "sla_violation_rate": 0.23702015817258093,
+   "bad_requests": 125932833.47475797,
+   "action_counts": [
+    1113,
+    2764,
+    1123
+   ]
+  }
+ ],
+ "eval_mean_return": -2422087.746729192,
+ "eval_mean_pods": 12.36344,
+ "eval_mean_pod_changes": 2311.8,
+ "train_episodes": [
+  {
+   "steps": 2000,
+   "ret": -7189114.569234527,
+   "pod_changes": 1555,
+   "reversals": 0,
+   "scale_up": 1555,
+   "scale_down": 0,
+   "mean_pods": 14.522,
+   "sla_violation_rate": 0.34471534351487465,
+   "bad_requests": 76205440.86038794,
+   "action_counts": [
+    884,
+    306,
+    810
+   ],
+   "episode": 0,
+   "sim_seed": 459,
+   "complete": false,
+   "end_step": 2000,
+   "epsilon_end": 0.09964103254292479,
+   "td_loss": 141.7268934204213,
+   "mean_abs_q": 93.34365844726562,
+   "mean_abs_td": 12.652420997619629
+  }
+ ],
+ "train_wall_s": 46.142993211746216,
+ "train_cpu_s": 45.918444844999996,
+ "cpu_s_per_1k_steps": 22.959222422499998,
+ "grad_updates": 0
+}
